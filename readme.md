@@ -1,29 +1,27 @@
-# 🗳️ Voting Panel Application
 
-This is a simple open-source voting application that allows users to vote for candidates, register new ones, and generate voting reports in CSV and PDF format.
+# Voting Panel Application
 
----
+## Features
 
-## ✅ Features
+✅ Allows voting for candidates  
+✅ Allows submitting new candidates  
+✅ Prevents multiple voting based on voter identifier  
+✅ Generates bar charts of election results  
+✅ Produces election reports in *.PDF and *.CSV formats  
 
-- Vote for candidates  
-- Add new candidates  
-- Prevent multiple votes using unique voter identifiers  
-- Generate bar charts showing election results  
-- Export results to `.PDF` and `.CSV` reports  
-- **Role-based access control:**
-  - `admin` – full access for managing candidates, supervising the voting process, generating statistics and exporting reports  
-  - `user` – limited access for registering candidates and viewing/exporting results, but **without voting rights**
+### Roles
 
-## ⚙️ Technologies Used
+- **admin** – responsible for overseeing the voting process, can vote, add candidates, export results, and view statistics  
+- **user** – can add candidates, view results, export data, but cannot vote  
+- **voter** – can only vote (no login required)
 
-- **Node.js** – JavaScript runtime for server-side application  
-- **NPM** – Package manager for Node.js  
-- **SQLite** – Lightweight open-source relational database  
+## Technologies Used
 
----
+- Node.js – runtime environment, open source, server-side JavaScript  
+- npm – Node.js package manager  
+- SQLite – open-source relational database management system  
 
-## 🗄️ Database Model
+## Data Model
 
 ```sql
 CREATE TABLE candidates (
@@ -45,3 +43,71 @@ CREATE TABLE users (
     password TEXT,
     role TEXT
 );
+```
+
+## Project Structure
+
+```
+voting-app
+├── frontend/
+│   ├── index.html
+│   ├── help.html
+│   ├── app.js  
+│   └── style.css  
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   └── database.sqlite
+```
+
+---
+
+## How to Run the Backend (Node.js + Express + SQLite)
+
+1. Install [Node.js](https://nodejs.org/) if you don't have it installed.  
+2. Open a terminal in the `backend/` folder:  
+   ```bash
+   cd backend
+   ```
+3. Install dependencies:  
+   ```bash
+   npm install
+   ```
+4. Start the server:  
+   ```bash
+   node server.js
+   ```
+5. The server runs at: [http://localhost:3000](http://localhost:3000)
+
+---
+
+### Testing Backend Endpoints (server.js runs by default on port 3000)
+
+**Add a candidate:**  
+```bash
+curl -X POST http://localhost:3000/api/candidates -H "Content-Type: application/json" -d "{"name":"John Brown"}"
+```
+
+**Vote:**  
+```bash
+curl -X POST http://localhost:3000/vote -H "Content-Type: application/json" -d "{"voter_identifier": "12345678901", "candidate_id": 2, "name": "VOTE1"}"
+```
+
+**Add a user:**  
+```bash
+curl -X POST http://localhost:3000/login -H "Content-Type: application/json" -d "{"username": "admin1", "password": "admin1234", "role": "admin"}"
+```
+
+**Get election results:**  
+```bash
+curl http://localhost:3000/candidates
+```
+
+---
+
+### Checking voting results using SQLite CLI
+
+```bash
+...\sqlite\sqlite3 database.sqlite
+SELECT * FROM candidates;
+```
