@@ -1,0 +1,11 @@
+body {
+  font-family: Arial; max-width:800px; margin:40px auto; padding:20px; background:#f9f9f9;
+}
+h1,h2 { text-align:center; }
+form { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+input,select,button { padding:10px; font-size:16px; }
+button { background:#3498db;color:white;border:none;cursor:pointer;}
+button:hover { background:#2980b9; }
+p { color:red; text-align:center; }
+ul { list-style:none; padding:0; }
+ul li { background:white; margin:5px 0; padding:10px; border-radius:5px; border:1px solid #ddd; }
