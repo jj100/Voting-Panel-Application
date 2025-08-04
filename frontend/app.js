@@ -86,7 +86,7 @@ voteForm.addEventListener('submit', e => {
       candidate_id: candSel.value
     })
   }).then(r=>r.json()).then(d=>{
-    voteMsg.textContent = d.success ? 'Głos oddany' : d.error;voter_identifier
+    voteMsg.textContent = d.success ? 'Vote cast' : d.error;voter_identifier
     loadCandidates();
     loadResults();
   });
@@ -115,7 +115,7 @@ function loadResults(){
       resultList.innerHTML = '';
       data.forEach(c => {
         const li = document.createElement('li');
-        li.textContent = `${c.name}: ${c.votes} głosów`;
+        li.textContent = `${c.name}: ${c.votes} votes`;
         resultList.appendChild(li);
       });
       drawChart(data);
@@ -128,6 +128,6 @@ function drawChart(data){
   if(chart) chart.destroy();
   chart = new Chart(ctx, {
     type: 'bar',
-    data: { labels, datasets: [{ label:'Głosy', data:votes, backgroundColor:'rgba(54,162,235,0.6)' }] }
+    data: { labels, datasets: [{ label:'Number of votes', data:votes, backgroundColor:'rgba(54,162,235,0.6)' }] }
   });
 }

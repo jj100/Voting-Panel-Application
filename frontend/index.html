@@ -2,30 +2,30 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Panel Głosowania</title>
+<title>Voting panel</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1>Panel Głosowania</h1>
+<h1>Voting panel</h1>
 <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
    <tr>
     <td style="padding: 8px;">Adres API</td>
     <td style="padding: 8px; color: brown;" id="api-url">—</td>
   </tr>
   <tr>
-    <td style="padding: 8px;">Rola</td>
+    <td style="padding: 8px;">Role</td>
     <td style="padding: 8px; color: green;" id="api-rola">—</td>
   </tr>
    
 </table>
 
 <div id="login-area">
-  <h2>Logowanie</h2>
+  <h2>Login</h2>
   <form id="login-form">
     <input type="text" id="login_user" placeholder="Login">
     <input type="password" id="login_pass" placeholder="Hasło">
-    <button type="submit">Logowanie</button>
+    <button type="submit">Login</button>
   </form>
   <p id="login-msg"></p>
 </div>
@@ -36,29 +36,29 @@
     <input type="text" id="voter_name"       placeholder="Imię i nazwisko" required>
     <input type="text" id="voter_identifier" placeholder="Identyfikator"   required>
     <select id="candidate_select" required></select>
-    <button type="submit">Głosuj</button>
+    <button type="submit">VOTE</button>
   </form>
   <p id="vote-msg"></p>
 </div>
 
 <div id="user-area" style="display:none;">
-  <h2>Dodaj kandydata</h2>
+  <h2>Add a candidate</h2>
   <form id="add-candidate-form">
-    <input type="text" id="candidate_name" placeholder="Nazwa kandydata" required>
-    <button type="submit">Dodaj kandydata</button>
+    <input type="text" id="candidate_name" placeholder="Candidate's name" required>
+    <button type="submit">Add a candidate</button>
   </form>
   <p id="add-msg"></p>
 </div>
 
 <div id="results-area" style="display:none;">
-  <h2>Wyniki i eksport</h2>
-  <button onclick="window.open(apiBase + '/export/csv')">Eksportuj CSV</button>
-  <button onclick="window.open(apiBase + '/export/pdf')">Eksportuj PDF</button>
+  <h2>Results and export</h2>
+  <button onclick="window.open(apiBase + '/export/csv')">Eksport CSV</button>
+  <button onclick="window.open(apiBase + '/export/pdf')">Eksport PDF</button>
   <canvas id="resultsChart" width="400" height="200"></canvas>
   <ul id="results-list"></ul>
 </div>
 
-<button onclick="window.open('help.html', '_blank')">Pomoc dla głosujących</button>
+<button onclick="window.open('help.html', '_blank')">Help for voters</button>
 
 <script src="app.js"></script>
 </body>

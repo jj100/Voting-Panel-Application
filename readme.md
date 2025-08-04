@@ -1,5 +1,6 @@
 
 # Voting Panel Application
+![Bar charts of election results ](image.png)
 
 ## Features
 
